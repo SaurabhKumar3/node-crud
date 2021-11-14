@@ -1,0 +1,56 @@
+<!-- include header -->
+<%- include('layout/header.ejs') %>
+<!-- /include header -->
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex justify-between">
+           <div class="filter">
+               <a href="/"><i class="fas fa-angle-double-left"></i> All Users</a>
+           </div>
+        </div>
+        <div class="form-title text-center">
+            <h2 class="text-dark">New User</h2>
+            <span class="text-light">Use the below form to create a new account</span>
+        </div>
+
+<!-- form handling -->
+<form action="/update/<%= user._id%>" method="POST" id="add_user" enctype="multipart/form-data">
+    <div class="new_user">
+        <div class="form-group">
+            <label for="name" class="text-light">Name</label>
+            <input type="hidden" name="id" value="">
+            <input type="text" name="name" value="<%= user.name%>" placeholder="Enter name">
+        </div>
+        <div class="form-group">
+            <label for="Email" class="text-light">Email</label>
+            <input type="text" name="email" value="<%= user.email%>" placeholder="enetr email">
+        </div>
+        <div class="form-group">
+            <label for="phone" class="text-light">Phone</label>
+            <input type="tel" name="phone" value="<%= user.phone%>" placeholder="example@gmail.com">
+        </div>
+        <div class="form-group">
+            <label for="image" class="text-light">Select Image</label>
+            <input type="file" name="image" value="" placeholder="example@gmail.com">
+            <img src="/<%= user.image%>" width="100" class="img=thumbnail">
+            <input type="hidden" name="old_image" value="<%= user.image%>">
+        </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit"  class="btn text-dark update">Update User</button>
+        </div>
+
+    </div>
+</form>
+       
+    </div>
+</main>
+<!-- /Main Site -->
+
+
+<!-- include footer -->
+<%- include('layout/footer.ejs') %>
+<!-- /include footer -->

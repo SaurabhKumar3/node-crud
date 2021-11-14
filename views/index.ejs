@@ -1,0 +1,60 @@
+<!-- include header -->
+<%- include('layout/header.ejs') %>
+<!-- /include header -->
+
+
+    <!-- Main Site -->
+    <main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex justify-between">
+                <a href="/add" class="border-shadow">
+                    <span class="text-gradient">New User <i class="fas fa-user"></i></span>
+                </a>
+            </div>
+
+            <!-- form handling -->
+            <form action="/" method="POST">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>@Email</th>
+                            <th>phone</th>
+                            <th>Action</th>
+                           >
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% users.forEach((row,index)=> {%>
+                            <tr>
+                                <td><%= index %></td>
+                                <td><img src="<%= row.image %>" width="50" class="img-thumbnail" /></td>
+                                <td><%= row.name%></td>
+                                <td><%= row.email %></td>
+                                <td><%= row.phone %></td>
+                                <td>
+                                    <a href="/edit/<%= row._id%>" class="btn border-shadow update">
+                                        <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+                                    </a>
+                                    <a href="/delet/<%=  row._id%>" class="btn border-shadow update">
+                                        <span class="text-gradient"><i class="fas fa-trash"></i></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        <%}) %>
+                        
+  
+                    </tbody>
+                </table>
+            </form>
+       
+        </div>
+    </main>
+<!-- /Main Site -->
+
+
+<!-- include footer -->
+<%- include('layout/footer.ejs') %>
+<!-- /include footer -->
