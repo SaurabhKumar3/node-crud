@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-
+dotenv.config();
 
 const path = require('path');
 const mongoose= require('mongoose')
@@ -11,7 +11,7 @@ const app = express();
 //dotenv.config( { path : '.env'} )
 const PORT = process.env.PORT || 3000
 
-mongoose.connect(url="mongodb://localhost:27017/node_crud",{useNewURLParser:true})
+mongoose.connect(process.env.DB_URI,{useNewURLParser:true})
 const db = mongoose.connection;
 
 db.on('error',(error)=> console.log(error));
